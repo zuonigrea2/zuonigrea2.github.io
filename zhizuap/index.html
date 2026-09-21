@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="知足APP - 一款专注于心理健康与正念生活的移动应用。提供冥想引导、情绪追踪、压力管理及自然白噪音，帮助用户在快节奏生活中找回内心的平静与平衡。">
+    <meta name="keywords" content="知足APP, 正念冥想, 情绪管理, 睡眠助手, 心理健康, 压力缓解, 自然白噪音">
+    <title>知足APP - 正念冥想与情绪管理助手</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #4a7c59;
+            --primary-light: #e8f5e9;
+            --accent-color: #ffb74d;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --bg-body: #f9fbf9;
+            --bg-card: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 24px rgba(74, 124, 89, 0.1);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center { text-align: center; }
+        
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-download {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-download:hover {
+            background-color: #3a6246;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #ffffff 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-hero {
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(74, 124, 89, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #3a6246;
+            color: white;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-mockup {
+            width: 280px;
+            height: 560px;
+            background: #fff;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border: 8px solid #1a1a1a;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-screen {
+            width: 90%;
+            height: 90%;
+            background: linear-gradient(180deg, #e0f2f1 0%, #b2dfdb 100%);
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #00695c;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background: #1a1a1a;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            z-index: 2;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            font-size: 1.8rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+            color: var(--text-main);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* App Showcase */
+        .showcase {
+            background-color: var(--bg-card);
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .showcase-image img {
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .showcase-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .showcase-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .check-icon {
+            min-width: 24px;
+            height: 24px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            margin-top: 2px;
+        }
+
+        .showcase-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--text-main);
+        }
+
+        .showcase-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--primary-light);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            overflow: hidden;
+        }
+
+        .user-info h5 {
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        .user-info span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Download CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #2e5237 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .store-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .store-btn {
+            background-color: white;
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: opacity 0.3s;
+        }
+
+        .store-btn:hover {
+            opacity: 0.9;
+        }
+
+        .store-btn img {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f1f3f4;
+            padding: 60px 0 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #e0e0e0;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+
+            nav ul {
+                margin: 15px 0;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+                知足<span>APP</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#features">核心功能</a></li>
+                    <li><a href="#showcase">应用介绍</a></li>
+                    <li><a href="#testimonials">用户评价</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <a href="#download" class="btn-download">立即下载</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>在喧嚣中找到内心的宁静</h1>
+                    <p>知足APP 是您的全天候情绪管理助手。通过科学的冥想引导与自然白噪音，帮助您缓解焦虑、改善睡眠、重获生活的掌控感。</p>
+                    <div class="hero-buttons">
+                        <a href="#download" class="btn-hero btn-primary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            免费下载
+                        </a>
+                        <a href="#features" class="btn-hero btn-outline">
+                            了解更多
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div style="font-size: 3rem; margin-bottom: 10px;">🧘‍♀️</div>
+                            <h3>今日冥想</h3>
+                            <p style="font-size: 0.9rem; margin-top: 10px;">10分钟 · 焦虑缓解</p>
+                            <div style="width: 80%; height: 6px; background: rgba(255,255,255,0.4); border-radius: 3px; margin-top: 20px;">
+                                <div style="width: 40%; height: 100%; background: white; border-radius: 3px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="section-padding">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title">全方位的心理健康方案</h2>
+                    <p class="section-subtitle">无论您是初次尝试冥想，还是寻求深度放松，知足APP 都能为您提供个性化的支持。</p>
+                </div>
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">🧘</div>
+                        <h3>科学冥想引导</h3>
+                        <p>由专业心理咨询师录制的引导语，从呼吸练习到正念冥想，循序渐进帮助您集中注意力。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🌊</div>
+                        <h3>自然白噪音</h3>
+                        <p>收录雨声、海浪、森林鸟鸣等多种环境音效，助您快速进入深度睡眠或专注工作状态。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>情绪追踪日记</h3>
+                        <p>记录每日心情波动，通过数据可视化分析，帮助您识别压力源并优化生活作息。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🌙</div>
+                        <h3>睡眠质量监测</h3>
+                        <p>结合环境监测与声音分析，智能生成睡眠报告，提供针对性的助眠建议。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Showcase Section -->
+        <section id="showcase" class="section-padding showcase">
+            <div class="container showcase-grid">
+                <div class="showcase-image">
+                    <img src="https://picsum.photos/seed/calmness/600/400" alt="知足APP界面展示">
+                </div>
+                <div class="showcase-list">
+                    <h2 class="section-title">为什么选择知足APP？</h2>
+                    <div class="showcase-item">
+                        <div class="check-icon">✓</div>
+                        <div class="showcase-content">
+                            <h4>海量免费内容库</h4>
+                            <p>每日更新精选冥想课程，涵盖晨间唤醒、睡前放松、职场解压等多种场景。</p>
+                        </div>
+                    </div>
+                    <div class="showcase-item">
+                        <div class="check-icon">✓</div>
+                        <div class="showcase-content">
+                            <h4>极简主义设计</h4>
+                            <p>界面清爽无干扰，沉浸式体验让您专注于当下，享受片刻的宁静。</p>
+                        </div>
+                    </div>
+                    <div class="showcase-item">
+                        <div class="check-icon">✓</div>
+                        <div class="showcase-content">
+                            <h4>隐私安全保护</h4>
+                            <p>您的情绪日记与睡眠数据均经过本地加密处理，我们承诺绝不共享您的隐私。</p>
+                        </div>
+                    </div>
+                    <div class="showcase-item">
+                        <div class="check-icon">✓</div>
+                        <div class="showcase-content">
+                            <h4>离线使用模式</h4>
+                            <p>下载课程与音效到本地，即使在没有网络的情况下也能随时使用。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="section-padding testimonials">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title">用户真实反馈</h2>
+                    <p class="section-subtitle">听听大家如何通过知足APP改善生活。</p>
+                </div>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <div class="user-profile">
+                            <div class="avatar">
+                                <img src="https://picsum.photos/seed/user1/100/100" alt="用户头像">
+                            </div>
+                            <div class="user-info">
+                                <h5>李晓梅</h5>
+                                <span>白领职员</span>
+                            </div>
+                        </div>
+                        <p class="quote">"自从开始使用知足APP的晨间冥想，我的工作效率明显提高了，焦虑感也减轻了很多。"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="user-profile">
+                            <div class="avatar">
+                                <img src="https://picsum.photos/seed/user2/100/100" alt="用户头像">
+                            </div>
+                            <div class="user-info">
+                                <h5>王强</h5>
+                                <span>程序员</span>
+                            </div>
+                        </div>
+                        <p class="quote">"雨声和白噪音功能太棒了，加班回家后听一会儿就能很快入睡，强烈推荐。"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="user-profile">
+                            <div class="avatar">
+                                <img src="https://picsum.photos/seed/user3/100/100" alt="用户头像">
+                            </div>
+                            <div class="user-info">
+                                <h5>赵婷</h5>
+                                <span>自由撰稿人</span>
+                            </div>
+                        </div>
+                        <p class="quote">"界面非常简洁，没有乱七八糟的广告。情绪日记功能让我更了解自己的内心状态。"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section-padding">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title">常见问题</h2>
+                    <p class="section-subtitle">关于知足APP的疑问解答。</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>知足APP是免费的吗？</h3>
+                        <p>知足APP提供基础功能完全免费，包括每日冥想引导、基础白噪音和情绪记录。高级课程和高级音效包需订阅会员服务。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>支持哪些平台？</h3>
+                        <p>知足APP目前支持 iOS 和 Android 手机用户。同时提供网页版同步功能，方便您在电脑上管理数据。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>如何取消会员订阅？</h3>
+                        <p>您可以在 APP 的「设置」-「账户」-「订阅管理」中随时取消自动续费，订阅结束前您仍可享受会员权益。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download CTA Section -->
+        <section id="download" class="section-padding cta-section">
+            <div class="container">
+                <h2>开启您的内心平静之旅</h2>
+                <p>现在下载知足APP，即刻体验专业的正念生活管理。</p>
+                <div class="store-badges">
+                    <a href="#" class="store-btn">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
+                        <span>Google Play</span>
+                    </a>
+                    <a href="#" class="store-btn">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store">
+                        <span>App Store</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>知足APP</h3>
+                    <p>致力于通过科技手段提升大众心理健康水平，让每个人都能在快节奏的生活中找到属于自己的知足与宁静。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>产品</h4>
+                    <ul>
+                        <li><a href="#">功能介绍</a></li>
+                        <li><a href="#">会员价格</a></li>
+                        <li><a href="#">更新日志</a></li>
+                        <li><a href="#">Web版</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>支持</h4>
+                    <ul>
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">媒体报道</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 知足科技有限公司 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+                          </html>
