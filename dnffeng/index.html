@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DNF封号查询工具，提供DNF官方封号记录查询、封号原因分析、解封咨询及防封号技巧指南。快速查询您的账号是否被冻结，了解游戏规则，保护您的冒险家资产。">
+    <meta name="keywords" content="dnf封号查询,地下城与勇士封号,账号查询,封号原因,防封号技巧,地下城与勇士">
+    <title>DNF封号查询 - 账号状态检测与解封指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-hover: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* 头部导航 */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-sub);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        /* 查询卡片 */
+        .query-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: -40px auto 40px;
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .input-wrapper {
+            display: flex;
+            gap: 8px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-primary:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        /* 内容区域 */
+        .main-content {
+            padding-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* 状态展示 */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .status-card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .status-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .status-icon.ok {
+            background-color: #d1fae5;
+            color: var(--success-color);
+        }
+
+        .status-icon.warn {
+            background-color: #fef3c7;
+            color: var(--warning-color);
+        }
+
+        .status-icon.error {
+            background-color: #fee2e2;
+            color: var(--danger-color);
+        }
+
+        .status-info h3 {
+            font-size: 1.125rem;
+            margin-bottom: 4px;
+        }
+
+        .status-info p {
+            font-size: 0.875rem;
+            color: var(--text-sub);
+        }
+
+        /* 信息列表 */
+        .info-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .info-item {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-item h3 {
+            font-size: 1.125rem;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .info-item ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.95rem;
+            color: var(--text-sub);
+        }
+
+        .info-item ul li:last-child {
+            border-bottom: none;
+        }
+
+        .info-item ul li strong {
+            color: var(--text-main);
+        }
+
+        /* 常见问题 */
+        .faq-section {
+            margin-top: 60px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 40px 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 32px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 16px 0;
+                gap: 16px;
+            }
+
+            nav ul {
+                gap: 16px;
+                font-size: 0.9rem;
+            }
+
+            .query-card {
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span>🔍</span>
+                <div>DNF封号查询<span style="font-weight:400; font-size: 0.9em; margin-left: 4px;">助手</span></div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">账号查询</a></li>
+                    <li><a href="#">封号原因</a></li>
+                    <li><a href="#">防封指南</a></li>
+                    <li><a href="#">联系客服</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>DNF封号查询</h1>
+                <p>快速查询您的《地下城与勇士》账号状态，了解封禁原因，获取专业的解封建议与防封号技巧。</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <!-- 查询区域 -->
+            <div class="query-card">
+                <form id="queryForm" onsubmit="handleQuery(event)">
+                    <div class="form-group">
+                        <label for="gameAccount">游戏账号</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="gameAccount" placeholder="请输入角色名或角色ID" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        立即查询状态
+                    </button>
+                    <p style="margin-top: 16px; font-size: 0.8rem; color: var(--text-sub); text-align: center;">
+                        本工具仅供辅助参考，最终结果以腾讯游戏官方公告为准。
+                    </p>
+                </form>
+            </div>
+
+            <!-- 查询结果展示区 (默认隐藏) -->
+            <div id="resultArea" style="display: none;">
+                <div class="section-title">查询结果概览</div>
+                <div class="status-grid">
+                    <div class="status-card">
+                        <div class="status-icon ok">✓</div>
+                        <div class="status-info">
+                            <h3>账号状态正常</h3>
+                            <p>未发现近期封禁记录</p>
+                        </div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-icon error">!</div>
+                        <div class="status-info">
+                            <h3>存在封禁风险</h3>
+                            <p>检测到异常登录行为</p>
+                        </div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-icon warn">⚠</div>
+                        <div class="status-info">
+                            <h3>封号处理中</h3>
+                            <p>申诉审核进度查询</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-list">
+                    <div class="info-item">
+                        <h3>🛡️ 防封号核心规则</h3>
+                        <ul>
+                            <li><strong>拒绝外挂软件：</strong>严禁使用任何第三方辅助工具、脚本或修改器。</li>
+                            <li><strong>拒绝交易异常：</strong>避免账号出现非正常时间段登录、跨大区频繁转移等异常行为。</li>
+                            <li><strong>拒绝非法交易：</strong>不要出售、购买账号或游戏币，避免被判定为“黑产”关联。</li>
+                            <li><strong>拒绝异常操作：</strong>短时间内大量重复操作或异常数据波动可能触发风控。</li>
+                        </ul>
+                    </div>
+                    <div class="info-item">
+                        <h3>📋 常见封号类型</h3>
+                        <ul>
+                            <li><strong>短期封禁：</strong>通常因误封或轻微违规（如使用非官方客户端），时间较短。</li>
+                            <li><strong>永久封禁：</strong>涉及使用外挂、开挂、利用Bug或严重破坏游戏平衡。</li>
+                            <li><strong>IP封禁：</strong>同一IP下多账号存在违规行为，导致该IP下所有账号受牵连。</li>
+                            <li><strong>设备封禁：</strong>检测到硬件特征码异常（如虚拟机、模拟器异常）。</li>
+                        </ul>
+                    </div>
+                    <div class="info-item">
+                        <h3>🚀 如何进行解封申诉</h3>
+                        <ul>
+                            <li><strong>官方渠道：</strong>访问腾讯游戏安全中心官网进行自助申诉。</li>
+                            <li><strong>提交材料：</strong>提供账号注册时间、最近登录地点、充值记录等证明材料。</li>
+                            <li><strong>保持耐心：</strong>人工审核通常需要3-15个工作日，请勿重复提交。</li>
+                            <li><strong>避免二次违规：</strong>申诉期间请勿再次登录游戏或使用该账号进行交易。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div class="faq-section">
+                    <div class="section-title">常见问题 (FAQ)</div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">查询显示正常但无法登录？ <span>+</span></div>
+                        <div class="faq-answer">
+                            如果查询接口显示账号状态正常，但您无法登录游戏，可能是由于网络波动、服务器维护或账号密码错误导致。请尝试重启网络或联系客服确认服务器状态。
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">误封了怎么办？ <span>+</span></div>
+                        <div class="faq-answer">
+                            如果您确定自己没有使用外挂且遵守游戏规则，可以视为误封。请立即前往腾讯游戏安全中心提交申诉，并在申诉理由中详细说明情况，上传相关截图证明。
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">什么是IP封禁？ <span>+</span></div>
+                        <div class="faq-answer">
+                            IP封禁是指您的网络IP地址被系统判定为存在风险（例如该IP下有大量违规账号）。这通常会导致同IP下的其他账号也可能受到影响，建议更换网络环境后尝试登录。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于工具</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.8;">
+                        本站提供的DNF封号查询服务仅为辅助参考工具，旨在帮助玩家快速了解账号基本状态。所有游戏数据均以腾讯官方后台数据为准。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>相关链接</h4>
+                    <ul>
+                        <li><a href="#">腾讯游戏安全中心</a></li>
+                        <li><a href="#">DNF官方网站</a></li>
+                        <li><a href="#">DNF社区论坛</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>帮助中心</h4>
+                    <ul>
+                        <li><a href="#">使用条款</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">联系支持</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 DNF封号查询助手 版权所有. 仅供学习交流使用，非官方网站。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ 切换逻辑
+        function toggleFaq(element) {
+            const parent = element.parentElement;
+            const icon = element.querySelector('span');
+            
+            parent.classList.toggle('active');
+            
+            if (parent.classList.contains('active')) {
+                icon.textContent = '-';
+            } else {
+                icon.textContent = '+';
+            }
+        }
+
+        // 模拟查询逻辑
+        function handleQuery(event) {
+            event.preventDefault();
+            
+            const btn = event.target.querySelector('button');
+            const input = document.getElementById('gameAccount');
+            const resultArea = document.getElementById('resultArea');
+            const originalText = btn.textContent;
+
+            // UI Loading 状态
+            btn.disabled = true;
+            btn.textContent = '查询中...';
+
+            // 模拟网络延迟
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.textContent = originalText;
+                
+                // 显示结果区域
+                resultArea.style.display = 'block';
+                
+                // 平滑滚动到结果区
+                resultArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                
+                // 简单的输入框反馈
+                if(input.value.trim().length > 0) {
+                    // 这里可以添加具体的逻辑判断，目前仅做展示
+                }
+            }, 800);
+        }
+    </script>
+</body>
+</html>
