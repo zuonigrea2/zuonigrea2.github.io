@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="万劫在线阅读平台，提供高清正版万劫漫画、小说及同人作品，包含最新章节更新、排行榜单、分类推荐及读者社区互动服务。">
+    <meta name="keywords" content="万劫,万劫漫画,万劫小说,在线阅读,漫画推荐,小说连载">
+    <title>万劫-高清正版漫画小说连载与阅读平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #7f8c8d;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-between {
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            padding: 10px 0;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        .search-box {
+            display: flex;
+            background: #f0f2f5;
+            border-radius: 20px;
+            padding: 5px 15px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 200px;
+            font-size: 14px;
+        }
+
+        .search-box button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .stat-item h3 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* Section Title */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -14px;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .view-all {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .view-all:hover {
+            color: var(--accent-color);
+        }
+
+        /* Manga Grid */
+        .manga-grid {
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        }
+
+        .manga-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .manga-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .manga-cover {
+            width: 100%;
+            aspect-ratio: 2/3;
+            object-fit: cover;
+            background: #eee;
+        }
+
+        .manga-info {
+            padding: 12px;
+        }
+
+        .manga-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .manga-meta {
+            font-size: 12px;
+            color: var(--text-light);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tag {
+            background: #f0f2f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--text-light);
+        }
+
+        .tag.hot {
+            background: #ffebee;
+            color: var(--accent-color);
+        }
+
+        /* Ranking List */
+        .ranking-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .ranking-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .ranking-item {
+            display: flex;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            box-shadow: var(--shadow);
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .ranking-item:hover {
+            background: #f9f9f9;
+        }
+
+        .rank-num {
+            font-size: 24px;
+            font-weight: 800;
+            width: 40px;
+            color: #ddd;
+            text-align: center;
+        }
+
+        .rank-item:nth-child(1) .rank-num { color: #ff4757; }
+        .rank-item:nth-child(2) .rank-num { color: #ffa502; }
+        .rank-item:nth-child(3) .rank-num { color: #ffa502; }
+
+        .rank-cover {
+            width: 60px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 15px;
+        }
+
+        .rank-info {
+            flex: 1;
+        }
+
+        .rank-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .rank-desc {
+            font-size: 12px;
+            color: var(--text-light);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .rank-score {
+            text-align: right;
+            font-weight: 700;
+            color: #f1c40f;
+        }
+
+        .rank-score small {
+            font-weight: 400;
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* Category Sidebar */
+        .category-sidebar {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+
+        .category-sidebar h4 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        .category-list li {
+            margin-bottom: 10px;
+        }
+
+        .category-list a {
+            display: block;
+            padding: 5px 0;
+            color: var(--text-main);
+            font-size: 14px;
+        }
+
+        .category-list a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .category-list .count {
+            float: right;
+            color: #ccc;
+            font-size: 12px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: #bdc3c7;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                height: auto;
+                padding: 15px 0;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .ranking-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .search-box {
+                display: none; /* Hide search on mobile for simplicity */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-inner flex flex-between">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                万劫<span>阅读</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">漫画</a></li>
+                    <li><a href="#">小说</a></li>
+                    <li><a href="#">排行榜</a></li>
+                    <li><a href="#">社区</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索作品或作者...">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>探索万劫世界</h1>
+            <p>汇集全网热门原创与转载漫画、小说资源。在这里，体验极致的阅读快感，发现你心中的万劫传说。</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>10,000+</h3>
+                    <p>部作品</p>
+                </div>
+                <div class="stat-item">
+                    <h3>500万+</h3>
+                    <p>读者</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24h</h3>
+                    <p>极速更新</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <!-- Latest Updates Section -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">最新更新</h2>
+                <a href="#" class="view-all">查看更多 &rarr;</a>
+            </div>
+            <div class="grid manga-grid">
+                <!-- Card 1 -->
+                <article class="manga-card">
+                    <img src="https://picsum.photos/seed/wanjie1/300/450" alt="封面图" class="manga-cover">
+                    <div class="manga-info">
+                        <h3 class="manga-title">万劫：重生之路</h3>
+                        <div class="manga-meta">
+                            <span class="tag hot">热门</span>
+                            <span>玄幻</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Card 2 -->
+                <article class="manga-card">
+                    <img src="https://picsum.photos/seed/wanjie2/300/450" alt="封面图" class="manga-cover">
+                    <div class="manga-info">
+                        <h3 class="manga-title">万劫魔尊</h3>
+                        <div class="manga-meta">
+                            <span class="tag">连载中</span>
+                            <span>仙侠</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Card 3 -->
+                <article class="manga-card">
+                    <img src="https://picsum.photos/seed/wanjie3/300/450" alt="封面图" class="manga-cover">
+                    <div class="manga-info">
+                        <h3 class="manga-title">万劫神兵录</h3>
+                        <div class="manga-meta">
+                            <span class="tag">完结</span>
+                            <span>历史</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Card 4 -->
+                <article class="manga-card">
+                    <img src="https://picsum.photos/seed/wanjie4/300/450" alt="封面图" class="manga-cover">
+                    <div class="manga-info">
+                        <h3 class="manga-title">万劫OL：觉醒</h3>
+                        <div class="manga-meta">
+                            <span class="tag">游戏</span>
+                            <span>同人</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Card 5 -->
+                <article class="manga-card">
+                    <img src="https://picsum.photos/seed/wanjie5/300/450" alt="封面图" class="manga-cover">
+                    <div class="manga-info">
+                        <h3 class="manga-title">万劫深渊</h3>
+                        <div class="manga-meta">
+                            <span class="tag">惊悚</span>
+                            <span>悬疑</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Card 6 -->
+                <article class="manga-card">
+                    <img src="https://picsum.photos/seed/wanjie6/300/450" alt="封面图" class="manga-cover">
+                    <div class="manga-info">
+                        <h3 class="manga-title">万劫战纪</h3>
+                        <div class="manga-meta">
+                            <span class="tag">热血</span>
+                            <span>动作</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Ranking Section -->
+        <section style="margin-top: 50px;">
+            <div class="ranking-layout">
+                <div>
+                    <div class="section-header">
+                        <h2 class="section-title">本周热门榜</h2>
+                        <a href="#" class="view-all">完整榜单 &rarr;</a>
+                    </div>
+                    <div class="ranking-list">
+                        <div class="ranking-item">
+                            <span class="rank-num">1</span>
+                            <img src="https://picsum.photos/seed/rank1/100/150" alt="封面" class="rank-cover">
+                            <div class="rank-info">
+                                <h3 class="rank-title">万劫：逆天改命</h3>
+                                <p class="rank-desc">讲述了主角在绝境中觉醒上古血脉，一路逆袭，最终问鼎苍穹的热血故事。</p>
+                            </div>
+                            <div class="rank-score">9.8<small>分</small></div>
+                        </div>
+                        <div class="ranking-item">
+                            <span class="rank-num">2</span>
+                            <img src="https://picsum.photos/seed/rank2/100/150" alt="封面" class="rank-cover">
+                            <div class="rank-info">
+                                <h3 class="rank-title">万劫神途</h3>
+                                <p class="rank-desc">宏大的世界观设定，细腻的人物刻画，带你领略万劫世界的奇幻冒险。</p>
+                            </div>
+                            <div class="rank-score">9.6<small>分</small></div>
+                        </div>
+                        <div class="ranking-item">
+                            <span class="rank-num">3</span>
+                            <img src="https://picsum.photos/seed/rank3/100/150" alt="封面" class="rank-cover">
+                            <div class="rank-info">
+                                <h3 class="rank-title">万劫轮回</h3>
+                                <p class="rank-desc">跨越时空的爱恨情仇，在无尽的轮回中寻找真相，剧情跌宕起伏。</p>
+                            </div>
+                            <div class="rank-score">9.5<small>分</small></div>
+                        </div>
+                        <div class="ranking-item">
+                            <span class="rank-num">4</span>
+                            <img src="https://picsum.photos/seed/rank4/100/150" alt="封面" class="rank-cover">
+                            <div class="rank-info">
+                                <h3 class="rank-title">万劫行者</h3>
+                                <p class="rank-desc">都市异能题材，讲述一名普通行者如何在万劫世界中斩妖除魔。</p>
+                            </div>
+                            <div class="rank-score">9.3<small>分</small></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <aside>
+                    <div class="category-sidebar">
+                        <h4>分类浏览</h4>
+                        <ul class="category-list">
+                            <li><a href="#">玄幻奇幻 <span class="count">1200</span></a></li>
+                            <li><a href="#">都市言情 <span class="count">850</span></a></li>
+                            <li><a href="#">历史军事 <span class="count">600</span></a></li>
+                            <li><a href="#">科幻末世 <span class="count">430</span></a></li>
+                            <li><a href="#">游戏竞技 <span class="count">320</span></a></li>
+                            <li><a href="#">灵异悬疑 <span class="count">290</span></a></li>
+                            <li><a href="#">二次元 <span class="count">510</span></a></li>
+                            <li><a href="#">武侠仙侠 <span class="count">780</span></a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Recommended Section -->
+        <section style="margin-top: 50px;">
+            <div class="section-header">
+                <h2 class="section-title">编辑精选</h2>
+            </div>
+            <div class="grid manga-grid">
+                <article class="manga-card">
+                    <img src="https://picsum.photos/seed/editor1/300/450" alt="封面" class="manga-cover">
+                    <div class="manga-info">
+                        <h3 class="manga-title">万劫天途</h3>
+                        <div class="manga-meta">
+                            <span class="tag">编辑推荐</span>
+                            <span>仙侠</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="manga-card">
+                    <img src="https://picsum.photos/seed/editor2/300/450" alt="封面" class="manga-cover">
+                    <div class="manga-info">
+                        <h3 class="manga-title">万劫棋局</h3>
+                        <div class="manga-meta">
+                            <span class="tag">独家</span>
+                            <span>推理</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="manga-card">
+                    <img src="https://picsum.photos/seed/editor3/300/450" alt="封面" class="manga-cover">
+                    <div class="manga-info">
+                        <h3 class="manga-title">万劫武神</h3>
+                        <div class="manga-meta">
+                            <span class="tag">完结</span>
+                            <span>热血</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="manga-card">
+                    <img src="https://picsum.photos/seed/editor4/300/450" alt="封面" class="manga-cover">
+                    <div class="manga-info">
+                        <h3 class="manga-title">万劫传说</h3>
+                        <div class="manga-meta">
+                            <span class="tag">经典</span>
+                            <span>冒险</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于万劫</h4>
+                    <p style="font-size: 14px; line-height: 1.8;">万劫阅读致力于为用户提供最优质的在线阅读体验。我们汇聚了海量的漫画与小说资源，涵盖多种题材，满足不同读者的需求。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">漫画首页</a></li>
+                        <li><a href="#">小说首页</a></li>
+                        <li><a href="#">排行榜</a></li>
+                        <li><a href="#">投稿通道</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>帮助中心</h4>
+                    <ul>
+                        <li><a href="#">使用指南</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">联系客服</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">新浪微博</a></li>
+                        <li><a href="#">QQ交流群</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 万劫阅读平台 版权所有. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+                                                                 </html>
