@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="韩国光州事件专题 - 1980年5月18日韩国光州民主化运动的历史回顾与详细资料。涵盖事件背景、经过、伤亡统计、历史意义及后续影响。">
+    <meta name="keywords" content="韩国光州事件, 光州民主化运动, 518事件, 1980年韩国, 韩国历史, 全斗焕, 光州事件真相">
+    <title>韩国光州事件-历史回顾与民主化运动资料</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #8B0000;
+            --secondary-color: #2c3e50;
+            --accent-color: #c0392b;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --text-light: #666;
+            --white: #ffffff;
+            --border-color: #e1e4e8;
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--secondary-color);
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: #f1f3f5;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #5e0000 100%);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 24px;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 60px;
+        }
+
+        .section-header {
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        /* Timeline Grid */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .timeline-item {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-top: 3px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-top-color: var(--primary-color);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .timeline-item p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-img-placeholder {
+            background-color: #ddd;
+            height: 180px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-img-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.7));
+        }
+
+        .card-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tag {
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--secondary-color);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .card-link {
+            font-weight: 600;
+            color: var(--primary-color);
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .card-link::after {
+            content: '→';
+            margin-left: 5px;
+            transition: margin-left 0.2s;
+        }
+
+        .card-link:hover::after {
+            margin-left: 10px;
+        }
+
+        /* Detailed Content Area */
+        .content-split {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .article-content h3 {
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            color: var(--secondary-color);
+        }
+
+        .article-content p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .article-content ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .article-content li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar-box {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .sidebar-box h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .stat-highlight {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #bdc3c7;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h5 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .content-split {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+                padding: 6px 8px;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 0;
+            }
+
+            nav ul {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span>518</span>历史档案
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">事件概览</a></li>
+                    <li><a href="#">历史背景</a></li>
+                    <li><a href="#">伤亡统计</a></li>
+                    <li><a href="#">历史意义</a></li>
+                    <li><a href="#">相关文献</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>韩国光州事件</h1>
+                <p>1980年5月18日至27日，韩国光州发生的大规模民主化运动。这场运动是韩国现代史上重要的转折点，见证了人民争取民主与自由的抗争。</p>
+                <div class="hero-meta">
+                    <span>📅 时间：1980年5月18日 - 5月27日</span>
+                    <span>📍 地点：韩国全罗南道光州市</span>
+                    <span>👤 关键人物：全斗焕、张玲圭</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Main Content Layout -->
+            <div class="content-split">
+                
+                <!-- Left Column: Detailed Information -->
+                <article class="article-content">
+                    <section>
+                        <div class="section-header">
+                            <h2>事件背景</h2>
+                            <p>20世纪70年代，韩国处于军事独裁统治之下，朴正熙政权通过《国家保安法》压制异见，社会矛盾日益激化。</p>
+                        </div>
+                        <p>1979年10月26日，韩国总统朴正熙被中央情报部部长金载圭暗杀，韩国政坛陷入动荡。1979年12月12日，陆军少将全斗焕发动“12.12军事政变”，掌握了军政大权。</p>
+                        <p>1980年4月，全斗焕政权在釜山和马山发动“釜马事态”，镇压民主运动。同年5月，全罗南道和全罗北道的民主运动迅速蔓延至光州。</p>
+                    </section>
+
+                    <section>
+                        <div class="section-header">
+                            <h2>事件经过</h2>
+                            <p>5月16日，光州市民罢工罢课，要求民主化。5月18日，全罗南道警备司令部宣布戒严，并派遣军队进入光州。</p>
+                            <p>军队与市民发生冲突，导致学生和市民伤亡。5月20日，市民组成“民主统一战线”，占领广播电台，要求戒严司令部撤军。5月21日，数万名市民走上街头，与军队发生激烈武装冲突，并占领了警察局和监狱。</p>
+                        </div>
+                        <p>5月25日，全斗焕政权调动陆军空输旅团和海陆空部队，向光州发动总攻。5月27日，政府军攻占光州，事件结束。</p>
+                    </section>
+
+                    <section>
+                        <div class="section-header">
+                            <h2>事件结果与后续</h2>
+                        </div>
+                        <p>光州事件被定性为“暴乱”，全斗焕政权对参与者和市民进行了严厉的镇压。据韩国官方统计，事件造成至少187人死亡，超过1000人受伤。然而，民间和国际组织的统计数字普遍更高，被认为存在数据掩盖。</p>
+                        <p>光州事件虽然以镇压告终，但它极大地唤醒了韩国民众的民主意识。全斗焕政权因光州事件的合法性受到质疑，最终在1987年韩国宪政史上第一次民主选举中下台。</p>
+                    </section>
+                </article>
+
+                <!-- Right Column: Sidebar -->
+                <aside>
+                    <div class="sidebar-box">
+                        <h4>核心数据统计</h4>
+                        <div class="stat-row">
+                            <span class="stat-label">官方死亡人数</span>
+                            <span class="stat-value stat-highlight">187人</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">受伤人数</span>
+                            <span class="stat-value">1,200+人</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">逮捕人数</span>
+                            <span class="stat-value">3,000+人</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">时间跨度</span>
+                            <span class="stat-value">10天</span>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-box">
+                        <h4>关键人物</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+                                <strong style="display:block; color:var(--secondary-color)">全斗焕</strong>
+                                <span style="font-size:0.9rem; color:#666;">时任陆军少将，后任韩国总统，事件直接指挥者。</span>
+                            </li>
+                            <li>
+                                <strong style="display:block; color:var(--secondary-color)">张玲圭</strong>
+                                <span style="font-size:0.9rem; color:#666;">全罗南道警备司令，负责镇压光州市民。</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-box">
+                        <h4>相关专题</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 10px;"><a href="#" style="font-size:0.95rem;">12.12军事政变</a></li>
+                            <li style="margin-bottom: 10px;"><a href="#" style="font-size:0.95rem;">韩国民主化运动</a></li>
+                            <li style="margin-bottom: 10px;"><a href="#" style="font-size:0.95rem;">1987年六二四民主运动</a></li>
+                            <li style="margin-bottom: 10px;"><a href="#" style="font-size:0.95rem;">光州民主墓园</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Timeline Section -->
+            <section>
+                <div class="section-header">
+                    <h2>事件时间线</h2>
+                    <p>回顾1980年5月光州民主化运动的关键节点。</p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-date">5月16日</span>
+                        <h3>光州学生罢课</h3>
+                        <p>光州地区学生开始罢课，抗议釜马事态，要求民主化改革。</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">5月18日</span>
+                        <h3>戒严令发布与冲突</h3>
+                        <p>全罗南道警备司令部宣布戒严，军队进入光州与学生发生首次冲突。</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">5月20日</span>
+                        <h3>市民武装占领</h3>
+                        <p>市民组成民主统一战线，占领广播电台，要求撤军，武装冲突升级。</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">5月25日</span>
+                        <h3>政府军总攻</h3>
+                        <p>全斗焕下令政府军（空输旅团等）向光州发动总攻，平定暴乱。</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">5月27日</span>
+                        <h3>光州陷落</h3>
+                        <p>政府军完全控制光州市，事件结束，随后展开大规模逮捕。</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">1980年至今</span>
+                        <h3>历史反思与纪念</h3>
+                        <p>光州事件成为韩国民主化的重要象征，每年5月18日都有纪念活动。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Related Articles -->
+            <section>
+                <div class="section-header">
+                    <h2>深度阅读</h2>
+                </div>
+                <div class="articles-grid">
+                    <article class="card">
+                        <div class="card-img-placeholder">
+                            📜
+                        </div>
+                        <div class="card-body">
+                            <span class="card-tag">历史研究</span>
+                            <h3>光州事件的历史真相</h3>
+                            <p>深入探讨光州事件的起因、过程及其对韩国现代政治格局的深远影响。</p>
+                            <a href="#" class="card-link">阅读全文</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-img-placeholder">
+                            🏛️
+                        </div>
+                        <div class="card-body">
+                            <span class="card-tag">人物传记</span>
+                            <h3>全斗焕与第五共和国</h3>
+                            <p>分析全斗焕政权的合法性危机以及其对韩国民主进程的阻碍。</p>
+                            <a href="#" class="card-link">阅读全文</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-img-placeholder">
+                            📰
+                        </div>
+                        <div class="card-body">
+                            <span class="card-tag">国际视角</span>
+                            <h3>光州事件与冷战格局</h3>
+                            <p>从国际关系的角度，分析美国对光州事件的反应及其对冷战的影响。</p>
+                            <a href="#" class="card-link">阅读全文</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h5>518历史档案</h5>
+                    <p style="font-size: 0.9rem; line-height: 1.6;">
+                        致力于保存和传播韩国光州事件的历史资料，为后人提供客观、准确的历史参考。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h5>快速链接</h5>
+                    <ul>
+                        <li><a href="#">事件背景</a></li>
+                        <li><a href="#">时间线</a></li>
+                        <li><a href="#">伤亡数据</a></li>
+                        <li><a href="#">历史文献</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>相关资源</h5>
+                    <ul>
+                        <li><a href="#">韩国民主化史</a></li>
+                        <li><a href="#">全斗焕政权研究</a></li>
+                        <li><a href="#">光州民主墓园</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 518历史档案. 保留所有权利. 本站内容仅供历史研究与教育用途。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+  </html>
