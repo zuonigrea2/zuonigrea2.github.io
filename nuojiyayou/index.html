@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>诺基亚游戏-经典N-Gage时代的怀旧游戏与模拟器指南</title>
+    <meta name="description" content="探索诺基亚游戏世界，重温N-Gage平台及早期S60时代的经典之作。提供热门手机游戏推荐、复古模拟器使用教程、机型兼容性分析以及怀旧游戏攻略分享。">
+    <meta name="keywords" content="诺基亚游戏, N-Gage, S60游戏, 复古手机游戏, 模拟器, 经典游戏下载">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #004c99;
+            --accent-color: #ff6600;
+            --bg-color: #f5f7fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius: 8px;
+            --spacing-unit: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            background: var(--primary-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 16px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Main Content Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e1e4e8;
+            padding-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .view-all {
+            font-size: 14px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Game Grid */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-image {
+            height: 140px;
+            background-color: #ddd;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .game-meta {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .platform-tag {
+            background: #f0f2f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Sidebar */
+        .sidebar-widget {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        .faq-list li {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .faq-list li:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .faq-a {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* Timeline / History */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid #e1e4e8;
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #95a5a6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none; /* Simplified for mobile */
+            }
+            
+            .header-inner {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <a href="#" class="logo">
+            <span>N-Gage</span> 诺基亚游戏
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#games">热门游戏</a></li>
+                <li><a href="#guide">模拟器指南</a></li>
+                <li><a href="#history">发展史</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>重温诺基亚时代的数字娱乐</h1>
+        <p>从N-Gage平台的横空出世到S60系统的辉煌岁月，探索那些刻在一代人记忆里的经典游戏。无论你是为了怀旧，还是寻找复古模拟器的玩法，这里都有你需要的资源与攻略。</p>
+        <div class="hero-tags">
+            <span class="tag">#N-Gage</span>
+            <span class="tag">#传奇</span>
+            <span class="tag">#复古模拟</span>
+            <span class="tag">#像素风</span>
+        </div>
+    </div>
+</section>
+
+<main class="container">
+    <div class="main-grid">
+        <!-- Left Column: Content -->
+        <div class="content-column">
+            
+            <!-- Hot Games Section -->
+            <section id="games">
+                <div class="section-header">
+                    <h2 class="section-title">经典诺基亚游戏推荐</h2>
+                    <a href="#" class="view-all">查看全部 &rarr;</a>
+                </div>
+                <div class="game-grid">
+                    <!-- Game Card 1 -->
+                    <article class="game-card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/nokia1/300/200" alt="生化危机 启示录封面">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="game-title">生化危机 启示录</h3>
+                            <div class="game-meta">
+                                <span class="platform-tag">N-Gage</span>
+                                <span>动作</span>
+                            </div>
+                            <p style="font-size: 13px; color: #666; margin-bottom: 10px;">卡普空经典移植作品，恐怖生存体验。</p>
+                            <a href="#" class="btn">阅读攻略</a>
+                        </div>
+                    </article>
+
+                    <!-- Game Card 2 -->
+                    <article class="game-card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/nokia2/300/200" alt="波斯王子 尘土封印封面">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="game-title">波斯王子 尘土封印</h3>
+                            <div class="game-meta">
+                                <span class="platform-tag">N-Gage</span>
+                                <span>动作</span>
+                            </div>
+                            <p style="font-size: 13px; color: #666; margin-bottom: 10px;">流畅的跑酷体验，经典动作游戏。</p>
+                            <a href="#" class="btn">阅读攻略</a>
+                        </div>
+                    </article>
+
+                    <!-- Game Card 3 -->
+                    <article class="game-card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/nokia3/300/200" alt="愤怒的小鸟 经典版封面">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="game-title">愤怒的小鸟 经典版</h3>
+                            <div class="game-meta">
+                                <span class="platform-tag">S60</span>
+                                <span>休闲</span>
+                            </div>
+                            <p style="font-size: 13px; color: #666; margin-bottom: 10px;">红鸟蓝猪的初次相遇，风靡全球。</p>
+                            <a href="#" class="btn">阅读攻略</a>
+                        </div>
+                    </article>
+
+                    <!-- Game Card 4 -->
+                    <article class="game-card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/nokia4/300/200" alt="地下城守护者 封面">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="game-title">地下城守护者</h3>
+                            <div class="game-meta">
+                                <span class="platform-tag">S60</span>
+                                <span>策略</span>
+                            </div>
+                            <p style="font-size: 13px; color: #666; margin-bottom: 10px;">经典的塔防与角色扮演结合。</p>
+                            <a href="#" class="btn">阅读攻略</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Guide Section -->
+            <section id="guide">
+                <div class="section-header">
+                    <h2 class="section-title">复古模拟器与玩法指南</h2>
+                </div>
+                <article style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                    <h3 style="margin-bottom: 15px; font-size: 1.2rem;">如何在现代设备上运行诺基亚游戏？</h3>
+                    <p style="margin-bottom: 15px; color: #555;">
+                        想要在安卓手机或电脑上体验当年的诺基亚游戏，通常需要使用模拟器软件。目前最主流的方案是使用 <strong>PPSSPP</strong> (模拟PSP) 或 <strong>Smartphone Emulator</strong> 类软件。
+                    </p>
+                    <p style="margin-bottom: 15px; color: #555;">
+                        <strong>操作步骤：</strong>
+                    </p>
+                    <ol style="margin-left: 20px; margin-bottom: 15px; color: #555; line-height: 1.8;">
+                        <li>下载并安装兼容的S60模拟器应用。</li>
+                        <li>获取游戏ROM文件（需注意版权问题，仅限个人学习研究）。</li>
+                        <li>将游戏文件导入模拟器，即可开始游戏。</li>
+                    </ol>
+                    <a href="#" class="btn">详细教程 &rarr;</a>
+                </article>
+            </section>
+
+            <!-- History Section -->
+            <section id="history">
+                <div class="section-header">
+                    <h2 class="section-title">诺基亚游戏发展简史</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2003年</div>
+                        <h4>N-Gage 平台发布</h4>
+                        <p style="font-size: 14px; color: #666;">诺基亚推出N-Gage游戏平台，试图将手机与游戏机结合，虽然初期因外形和定价备受争议，但开启了手机游戏的新纪元。</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2004年</div>
+                        <h4>《荣誉勋章》登陆</h4>
+                        <p style="font-size: 14px; color: #666;">全球首款登陆N-Gage平台的主流3A级射击游戏，证明了手机也能运行高质量大作。</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010年</div>
+                        <h4>N-Gage 服务关闭</h4>
+                        <p style="font-size: 14px; color: #666;">随着智能手机App Store和Android市场的爆发，诺基亚逐步停止了N-Gage平台的在线服务。</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Right Column: Sidebar -->
+        <aside class="sidebar-column">
+            
+            <!-- FAQ Widget -->
+            <div class="sidebar-widget" id="faq">
+                <h3 class="widget-title">常见问题 (FAQ)</h3>
+                <ul class="faq-list">
+                    <li>
+                        <div class="faq-q">N-Gage 和现在的手机游戏有什么区别？</div>
+                        <div class="faq-a">N-Gage游戏通常针对触屏前的按键设计，操作逻辑更接近掌机，且受限于当时硬件，画质为2D或早期3D。</div>
+                    </li>
+                    <li>
+                        <div class="faq-q">哪里可以下载诺基亚游戏？</div>
+                        <div class="faq-a">建议通过专业的模拟器论坛或开源游戏档案馆获取资源，请确保遵守当地法律法规。</div>
+                    </li>
+                    <li>
+                        <div class="faq-q">需要什么配置才能玩模拟器？</div>
+                        <div class="faq-a">普通智能手机即可流畅运行S60时代的游戏模拟器，配置要求极低。</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Tags Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">热门标签</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <span class="tag" style="background: #e3f2fd; color: #1565c0;">N-Gage 1.0</span>
+                    <span class="tag" style="background: #e3f2fd; color: #1565c0;">坦克大战</span>
+                    <span class="tag" style="background: #e3f2fd; color: #1565c0;">贪吃蛇</span>
+                    <span class="tag" style="background: #e3f2fd; color: #1565c0;">毁灭战士</span>
+                    <span class="tag" style="background: #e3f2fd; color: #1565c0;">合金弹头</span>
+                </div>
+            </div>
+
+        </aside>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>诺基亚游戏</h4>
+                <p style="color: #bdc3c7; font-size: 14px; line-height: 1.8;">
+                    专注于诺基亚N-Gage及S60时代的经典游戏资源整理与怀旧攻略。致力于为复古游戏爱好者提供一个纯净的交流与分享平台。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="#">游戏下载</a></li>
+                    <li><a href="#">模拟器教程</a></li>
+                    <li><a href="#">游戏排行榜</a></li>
+                    <li><a href="#">玩家社区</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>友情链接</h4>
+                <ul>
+                    <li><a href="#">诺基亚官网</a></li>
+                    <li><a href="#">PPSSPP 官方站</a></li>
+                    <li><a href="#">GameFAQs</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Nokia Game Archive. All rights reserved. 本站仅用于技术交流与怀旧展示。
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
