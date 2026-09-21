@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="社区论坛 - 汇聚兴趣交流、生活分享与专业讨论的综合性网络社区。提供最新话题、深度板块及互动空间。">
+    <meta name="keywords" content="社区论坛,网络社区,在线交流,兴趣社区,综合论坛">
+    <title>社区论坛-汇聚兴趣交流与专业讨论的互动平台</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary-color: #64748b;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        .site-header {
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand span {
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a.active, .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+
+        .search-bar {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            background: white;
+            border-radius: 50px;
+            padding: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            outline: none;
+            border-radius: 50px;
+        }
+
+        .search-bar button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Main Layout */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 240px 1fr 300px;
+            gap: 32px;
+        }
+
+        /* Sidebar Left */
+        .sidebar-left {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .menu-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .menu-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .menu-list li {
+            margin-bottom: 8px;
+        }
+
+        .menu-list a {
+            display: block;
+            padding: 8px 12px;
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .menu-list a:hover, .menu-list a.active {
+            background-color: #eff6ff;
+            color: var(--primary-color);
+        }
+
+        /* Content Area */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            position: relative;
+            padding-left: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 20px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Topic List */
+        .topic-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.2s;
+        }
+
+        .topic-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .topic-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .topic-meta {
+            flex: 1;
+        }
+
+        .topic-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .topic-info {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tag {
+            background-color: #f1f5f9;
+            color: var(--secondary-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        .tag.hot {
+            background-color: #fee2e2;
+            color: #ef4444;
+        }
+
+        .topic-excerpt {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .topic-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 16px;
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 20px;
+        }
+
+        .action-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .action-item:hover {
+            color: var(--primary-color);
+        }
+
+        /* Sidebar Right */
+        .sidebar-right {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .widget-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .rank-list {
+            counter-reset: rank;
+        }
+
+        .rank-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .rank-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .rank-num {
+            width: 24px;
+            height: 24px;
+            background-color: #e2e8f0;
+            color: var(--text-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .rank-item:nth-child(1) .rank-num { background-color: #fee2e2; color: #ef4444; }
+        .rank-item:nth-child(2) .rank-num { background-color: #ffedd5; color: #f97316; }
+        .rank-item:nth-child(3) .rank-num { background-color: #fef9c3; color: #eab308; }
+
+        .rank-content h4 {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        .rank-content p {
+            font-size: 0.75rem;
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .main-container {
+                grid-template-columns: 200px 1fr;
+            }
+            .sidebar-right {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .header-inner {
+                justify-content: center;
+            }
+            .user-actions .btn {
+                display: none;
+            }
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-left {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="#" class="brand">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>社区论坛</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#">综合讨论</a>
+                <a href="#">数码科技</a>
+                <a href="#">生活兴趣</a>
+                <a href="#">职场经验</a>
+                <a href="#">休闲娱乐</a>
+            </nav>
+            <div class="user-actions">
+                <button class="btn btn-outline">登录</button>
+                <button class="btn btn-primary">注册</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>发现你的兴趣圈子</h1>
+            <p>加入超过 100,000 名会员的在线社区，分享观点，结识朋友，探索无限可能。</p>
+            <div class="search-bar">
+                <input type="text" placeholder="搜索话题、用户或帖子...">
+                <button>搜索</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-container">
+        <!-- 左侧边栏 -->
+        <aside class="sidebar-left">
+            <div class="menu-card">
+                <div class="menu-title">🔥 热门板块</div>
+                <ul class="menu-list">
+                    <li><a href="#" class="active">综合讨论</a></li>
+                    <li><a href="#">数码科技</a></li>
+                    <li><a href="#">影视娱乐</a></li>
+                    <li><a href="#">游戏竞技</a></li>
+                    <li><a href="#">职场发展</a></li>
+                    <li><a href="#">生活百科</a></li>
+                    <li><a href="#">二手交易</a></li>
+                </ul>
+            </div>
+            
+            <div class="menu-card">
+                <div class="menu-title">📅 近期活动</div>
+                <ul class="menu-list">
+                    <li><a href="#">线上读书会：本周主题</a></li>
+                    <li><a href="#">摄影技巧分享会</a></li>
+                    <li><a href="#">新手程序员入门指南</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- 中间内容区 -->
+        <section class="content-area">
+            <div class="section-header">
+                <h2 class="section-title">最新动态</h2>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.85rem;">最新</button>
+                    <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.85rem;">最热</button>
+                </div>
+            </div>
+
+            <!-- 帖子 1 -->
+            <article class="topic-card">
+                <div class="topic-header">
+                    <div class="avatar">
+                        <img src="https://picsum.photos/seed/user1/100/100" alt="用户头像">
+                    </div>
+                    <div class="topic-meta">
+                        <h3 class="topic-title"><a href="#">如何评价最新发布的旗舰手机性能表现？</a></h3>
+                        <div class="topic-info">
+                            <span>科技发烧友</span>
+                            <span>•</span>
+                            <span>2小时前</span>
+                            <span>•</span>
+                            <span class="tag hot">热门</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="topic-excerpt">
+                    刚刚拿到手体验了一天，整体感觉流畅度确实提升不少，但续航表现还有待观察。想听听大家的实际使用反馈，特别是游戏场景下的表现。
+                </div>
+                <div class="topic-footer">
+                    <div class="action-btns">
+                        <span class="action-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                            128
+                        </span>
+                        <span class="action-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                            45
+                        </span>
+                        <span class="action-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+                            分享
+                        </span>
+                    </div>
+                    <span>回复 32</span>
+                </div>
+            </article>
+
+            <!-- 帖子 2 -->
+            <article class="topic-card">
+                <div class="topic-header">
+                    <div class="avatar">
+                        <img src="https://picsum.photos/seed/user2/100/100" alt="用户头像">
+                    </div>
+                    <div class="topic-meta">
+                        <h3 class="topic-title"><a href="#">周末去哪里露营比较好？求推荐路线</a></h3>
+                        <div class="topic-info">
+                            <span>户外探险家</span>
+                            <span>•</span>
+                            <span>5小时前</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="topic-excerpt">
+                    计划这个周末带家人去露营，预算大概人均500元左右。希望是交通便利且风景优美的地方，最好有淡水湖或者森林。大家有什么推荐吗？
+                </div>
+                <div class="topic-footer">
+                    <div class="action-btns">
+                        <span class="action-item">56</span>
+                        <span class="action-item">12</span>
+                        <span class="action-item">收藏</span>
+                    </div>
+                    <span>回复 18</span>
+                </div>
+            </article>
+
+            <!-- 帖子 3 -->
+            <article class="topic-card">
+                <div class="topic-header">
+                    <div class="avatar">
+                        <img src="https://picsum.photos/seed/user3/100/100" alt="用户头像">
+                    </div>
+                    <div class="topic-meta">
+                        <h3 class="topic-title"><a href="#">分享：我是如何从零开始学习Python的</a></h3>
+                        <div class="topic-info">
+                            <span>代码行者</span>
+                            <span>•</span>
+                            <span>1天前</span>
+                            <span>•</span>
+                            <span class="tag">经验</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="topic-excerpt">
+                    学习编程最重要的是坚持。我整理了一份适合新手的资源清单，包括书籍、视频课程和练习网站。希望能帮助到同样在路上的朋友。
+                </div>
+                <div class="topic-footer">
+                    <div class="action-btns">
+                        <span class="action-item">203</span>
+                        <span class="action-item">89</span>
+                        <span class="action-item">收藏</span>
+                    </div>
+                    <span>回复 56</span>
+                </div>
+            </article>
+
+            <!-- 帖子 4 -->
+            <article class="topic-card">
+                <div class="topic-header">
+                    <div class="avatar">
+                        <img src="https://picsum.photos/seed/user4/100/100" alt="用户头像">
+                    </div>
+                    <div class="topic-meta">
+                        <h3 class="topic-title"><a href="#">关于远程办公效率提升的几点建议</a></h3>
+                        <div class="topic-info">
+                            <span>产品经理</span>
+                            <span>•</span>
+                            <span>1天前</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="topic-excerpt">
+                            远程办公虽然自由，但也容易让人分心。分享几个我一直在用的工具和方法，帮助自己保持专注。
+                        </div>
+                        <div class="topic-footer">
+                            <div class="action-btns">
+                                <span class="action-item">34</span>
+                                <span class="action-item">8</span>
+                                <span class="action-item">收藏</span>
+                            </div>
+                            <span>回复 12</span>
+                        </div>
+            </article>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-outline" style="width: 100%;">加载更多内容</button>
+            </div>
+        </section>
+
+        <!-- 右侧边栏 -->
+        <aside class="sidebar-right">
+            <div class="widget-card">
+                <div class="menu-title">🔥 本周热议</div>
+                <div class="rank-list">
+                    <div class="rank-item">
+                        <span class="rank-num">1</span>
+                        <div class="rank-content">
+                            <h4>2024年最值得期待的国产动漫有哪些？</h4>
+                            <p>讨论热度：1.2w</p>
+                        </div>
+                    </div>
+                    <div class="rank-item">
+                        <span class="rank-num">2</span>
+                        <div class="rank-content">
+                            <h4>月薪三万在北京真的存不下钱吗？</h4>
+                            <p>讨论热度：8.5k</p>
+                        </div>
+                    </div>
+                    <div class="rank-item">
+                        <span class="rank-num">3</span>
+                        <div class="rank-content">
+                            <h4>显卡价格终于回落，现在是否入手好时机？</h4>
+                            <p>讨论热度：6.3k</p>
+                        </div>
+                    </div>
+                    <div class="rank-item">
+                        <span class="rank-num">4</span>
+                        <div class="rank-content">
+                            <h4>新手如何选择第一把吉他？</h4>
+                            <p>讨论热度：4.1k</p>
+                        </div>
+                    </div>
+                    <div class="rank-item">
+                        <span class="rank-num">5</span>
+                        <div class="rank-content">
+                            <h4>极简主义生活是否适合所有人？</h4>
+                            <p>讨论热度：3.2k</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget-card">
+                <div class="menu-title">📌 社区公告</div>
+                <ul class="menu-list" style="font-size: 0.9rem; color: var(--text-secondary);">
+                    <li><a href="#">关于规范网络发言的倡议书</a></li>
+                    <li><a href="#">新版社区积分规则说明</a></li>
+                    <li><a href="#">年度优秀版主评选活动开启</a></li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h3>关于社区论坛</h3>
+                <p style="font-size: 0.9rem; line-height: 1.8;">
+                    社区论坛致力于为用户提供一个开放、友善、专业的交流平台。我们相信，思想的碰撞能产生无限的火花。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h3>探索板块</h3>
+                <ul>
+                    <li><a href="#">综合讨论</a></li>
+                    <li><a href="#">数码科技</a></li>
+                    <li><a href="#">生活兴趣</a></li>
+                    <li><a href="#">职场发展</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>帮助中心</h3>
+                <ul>
+                    <li><a href="#">使用指南</a></li>
+                    <li><a href="#">社区规范</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">联系客服</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>关注我们</h3>
+                <ul>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">官方微博</a></li>
+                    <li><a href="#">加入邮件列表</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2024 社区论坛 版权所有. 本站内容仅供交流学习使用.
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+                                                 </html>
